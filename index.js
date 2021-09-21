@@ -1,7 +1,8 @@
 const http = require('http');
 const fs = require('fs');
 var requests = require('requests');
-const express = require('express')
+const express = require('express');
+const app = express()
 
 const homeFile = fs.readFileSync('home.html','utf-8');
 const replaceval = (tempval,orgval)=>{
@@ -14,7 +15,7 @@ const replaceval = (tempval,orgval)=>{
     return temperature;
 }
 
-const server = http.createServer((req,res)=> {
+app.get('/', function (req, res) {
     if(req.url == '/'){
         requests("https://api.openweathermap.org/data/2.5/weather?q=Faisalabad&appid=c3af16ad116b3a597efa9578837e41e0")
         .on('data', (chunk) => {
