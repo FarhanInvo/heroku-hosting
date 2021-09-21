@@ -33,4 +33,4 @@ app.get('/', function (req, res) {
     }
 });
 
-server.listen(7000,'127.0.0.1');
+app.listen(7000,'127.0.0.1');
