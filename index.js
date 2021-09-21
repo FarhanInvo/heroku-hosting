@@ -3,6 +3,7 @@ const fs = require('fs');
 var requests = require('requests');
 const express = require('express');
 const app = express()
+const port = process.env.PORT || 7000;
 
 const homeFile = fs.readFileSync('home.html','utf-8');
 const replaceval = (tempval,orgval)=>{
@@ -33,4 +34,6 @@ app.get('/', function (req, res) {
     }
 });
 
-app.listen(7000,'127.0.0.1');
+app.listen(port,()=>{
+    console.log(`Listening to port no. at ${port}`);
+});
